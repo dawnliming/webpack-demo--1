@@ -13,4 +13,45 @@ module.exports = {
      template: 'src/assets/index.html'
    })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use:["file-loader"],
+      },
+        {
+            test: /\.less$/i,
+            use: [
+              'style-loader',
+              'css-loader',
+              {
+                  loader: 'less-loader'
+                },
+            ],
+        },
+        {
+            test: /\.styl$/,
+            use: [
+                'style-loader',
+                'css-loader',
+                {
+                    loader: 'stylus-loader'
+                  },
+              ],
+        },
+        {
+            test: /\.scss$/i,
+            use: [
+            'style-loader',
+            'css-loader',
+            {
+                loader: 'sass-loader',
+                options: {
+                implementation: require('dart-sass'),
+                    },
+                },
+            ],
+        },
+    ],
+  },
 }
